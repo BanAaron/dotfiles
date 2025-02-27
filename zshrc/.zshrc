@@ -1,45 +1,39 @@
-nnoremap <SPACE> <Nop>
-let mapleader=" "
+export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
 
-" custom binds
-nmap <leader>rr <Action>(Run)
-nmap <leader>rs <Action>(Stop)
-nmap <leader>rd <Action>(Debug)
+export PATH=$PATH:/usr/local/go/bin
 
-nmap <leader>em <Action>(ExtractMethod)
-nmap <leader>re <Action>(RenameElement)
-nmap <leader>iv <Action>(IntroduceVariable)
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-vmap <leader>cc ~
-nmap <leader>cc ~
+# set up fuck
+eval $(thefuck --alias)
 
-nmap <leader>sv <Action>(SplitVertically)
-nmap <leader>sh <Action>(SplitHorizontally)
-nmap <leader>l <Action>(NextSplitter)
-nmap <leader>h <Action>(PrevSplitter)
+# set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
-nmap <leader>oi <Action>(OptimizeImports)
-nmap <leader>of <Action>(OpenFile)
+PROMPT='aaron@macbook %~ %'
 
-nmap <leader>qq :action CloseEditor<CR>
-nmap <leader>ww :w<CR>
+alias cat='bat'
+alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
 
-" regular vim settings
-set relativenumber
-set number
-set ignorecase
+alias ls='ls --color'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias quit="exit"
 
-" Show a few lines of context around the cursor.
-set scrolloff=5
+alias vimrc="vim ~/.vimrc"
+alias rc="vim ~/.zshrc"
 
-" Do incremental searching.
-set incsearch
+alias sqlite="sqlite3"
 
-" Don't use Ex mode, use Q for formatting.
-map Q
+alias py="python3"
+alias pyv="python3 -m venv venv"
+alias sv="source venv/bin/activate"
 
-" Highlight copied text
-Plug 'machakann/vim-highlightedyank'
-" Commentary plugin
-Plug 'tpope/vim-commentary'
+alias gr="go run main.go"
+
+export FZF_CTRL_T_OPTS="--height 60% --preview 'bat --style=numbers --color=always {}'"
+
+fastfetch
 
